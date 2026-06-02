@@ -55,7 +55,7 @@ do
 	vim.o.updatetime = 250
 
 	-- Decrease mapped sequence wait time
-	vim.o.timeoutlen = 300
+	vim.o.timeoutlen = 400
 
 	-- Configure how new splits should be opened
 	vim.o.splitright = true
@@ -296,7 +296,7 @@ do
 	vim.pack.add({ gh("folke/which-key.nvim") })
 	require("which-key").setup({
 		-- Delay between pressing a key and opening which-key (milliseconds)
-		delay = 200,
+		delay = 400,
 		icons = { mappings = vim.g.have_nerd_font },
 		-- Document existing key chains
 		spec = {

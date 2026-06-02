@@ -895,9 +895,9 @@ do
 				treesitter_try_attach(buf, language)
 			elseif vim.tbl_contains(available_parsers, language) then
 				-- If a parser is available in `nvim-treesitter`, auto-install it and enable it after the installation is done
-				require("nvim-treesitter").install(language):await(function()
-					treesitter_try_attach(buf, language)
-				end)
+				-- require("nvim-treesitter").install(language):await(function()
+				-- 	treesitter_try_attach(buf, language)
+				-- end)
 			else
 				-- Try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
 				treesitter_try_attach(buf, language)
@@ -931,6 +931,23 @@ do
 	--
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	-- require 'custom.plugins'
+end
+
+-- ============================================================
+-- Install yazi and replace netrw with it
+do
+	vim.pack.add({
+		"https://github.com/mikavilpas/yazi.nvim",
+	})
+	vim.g.loaded_netrwPlugin = 1
+
+	require("yazi").setup({
+		open_for_directories = true,
+	})
+
+	vim.keymap.set({ "n", "v" }, "<leader>--", "<cmd>Yazi<cr>", { desc = "Open Yazi at current file location" })
+	vim.keymap.set({ "n", "v" }, "<leader>-0", "<cmd>Yazi cwd<cr>", { desc = "Open Yazi at current working directory" })
+	vim.keymap.set({ "n", "v" }, "<leader>-=", "<cmd>Yazi toggle<cr>", { desc = "Resume last Yazi session" })
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

@@ -632,7 +632,7 @@ do
 		-- clangd = {},
 		-- gopls = {},
 		-- pyright = {},
-		-- rust_analyzer = {},
+		rust_analyzer = {},
 		--
 		-- Some languages (like typescript) have entire language plugins that can be useful:
 		--    https://github.com/pmizio/typescript-tools.nvim
@@ -932,7 +932,8 @@ do
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	-- require 'custom.plugins'
 end
-
+-- ============================================================
+-- SECTION 10: Custom settings
 -- ============================================================
 -- Install yazi and replace netrw with it
 do
@@ -948,6 +949,14 @@ do
 	vim.keymap.set({ "n", "v" }, "<leader>--", "<cmd>Yazi<cr>", { desc = "Open Yazi at current file location" })
 	vim.keymap.set({ "n", "v" }, "<leader>-0", "<cmd>Yazi cwd<cr>", { desc = "Open Yazi at current working directory" })
 	vim.keymap.set({ "n", "v" }, "<leader>-=", "<cmd>Yazi toggle<cr>", { desc = "Resume last Yazi session" })
+end
+
+-- Enable mini.cursorword
+require("mini.cursorword").setup()
+
+-- Install vim fugitive
+do
+	vim.pack.add({ "https://github.com/tpope/vim-fugitive.git" })
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
